@@ -12,11 +12,11 @@ app.get('/getRobloxThumbnail', async (req, res) => {
     try {
         const response = await fetch(url)
         const data = await response.json()
+        const url = 'https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=${userId}&size=420x420&format=Png'
+
 
         if (data && data.data && data.data.length > 0) {
-            if (headshot) {
-                url = 'https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=${userId}&size=420x420&format=Png'
-            } else {
+            if (!headshot) {
                 url = 'https://thumbnails.roblox.com/v1/users/avatar?userIds=${userId}&size=420x420&format=Png'
             }
 
