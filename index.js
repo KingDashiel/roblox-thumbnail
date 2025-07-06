@@ -25,7 +25,7 @@ app.get('/getRobloxThumbnail', async (req, res) => {
 });
 
 app.get('/', (req, res) => {
-    res.send('Replit server is running and ready for Roblox Studio requests!\nThis replit was created by Dashiel (@KingDashiei) on Roblox!')
+    res.send('Node server is running and ready for Roblox Studio requests!\nThis code was created by Dashiel (@KingDashiei) on Roblox!')
 });
 
 app.listen(port, () => {
