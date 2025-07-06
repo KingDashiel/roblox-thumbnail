@@ -7,7 +7,8 @@ app.use(express.json());
 
 app.get('/getRobloxThumbnail', async (req, res) => {
     const userId = req.query.userId || '1'
-    const headshot = req.query.headshot === 'true' ? true : false
+    const headshot = req.query.headshot === 'false' ? false : true
+
     if (headshot) {
         url = `https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=${userId}&size=420x420&format=Png`
     } else {
