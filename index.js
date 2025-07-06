@@ -7,6 +7,7 @@ app.use(express.json());
 
 app.get('/getRobloxThumbnail', async (req, res) => {
     const userId = req.query.userId || '1'
+    const headshot = req.query.headshot
     const url = `https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=${userId}&size=420x420&format=Png`
 
     try {
@@ -14,6 +15,10 @@ app.get('/getRobloxThumbnail', async (req, res) => {
         const data = await response.json()
 
         if (data && data.data && data.data.length > 0) {
+            if (!headshot) {
+                url = 'https://thumbnails.roblox.com/v1/users/avatar?userIds=${userId}&size=420x420&format=Png'
+            }
+            
             const imageUrl = data.data[0].imageUrl
             res.json({ success: true, imageUrl: imageUrl })
         } else {
